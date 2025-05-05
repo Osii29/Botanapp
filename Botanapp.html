@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BotanApp</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/png" href="logoBotanappMinisquared.png">
+
+</head>
+<body>
+
+  <header>
+    <div class="logo-container">
+      <img src="logoBotanappwithoutletters.png" alt="Logo de BotanApp" class="logo" />
+      <h1>BotanApp</h1>
+    </div>
+    <nav>
+      <button class="cart-toggle" onclick="toggleCart()">🛒 Carrito</button>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h2>¡El antojo a domicilio!</h2>
+  </div>
+
+  <div class="container" id="productos">
+    <h2>Productos Personalizables</h2>
+    <div class="products">
+
+      <div class="product-card">
+        <img src="mixpicante.png" alt="Botana">
+        <h3>Mix Picante</h3>
+        <p>Con papas, cacahuates y con chamoy.</p>
+        <button onclick="openNormalModal('Mix Picante')">Agregar al carrito</button>
+      </div>
+
+      <div class="product-card">
+        <img src="mixfrutal.png" alt="Botana">
+        <h3>Mix Frutal</h3>
+        <p>Con papas, una seleccion de fruta y chamoy.</p>
+        <button onclick="openNormalModal('Mix Frutal')">Agregar al carrito</button>
+      </div>
+
+      <div class="product-card">
+        <img src="mixdulce.png" alt="Botana">
+        <h3>Mix Dulce</h3>
+        <p>Con papas, gomitas y dulces con chamoy.</p>
+        <button onclick="openNormalModal('Mix Dulce')">Agregar al carrito</button>
+      </div>
+
+      <div class="product-card">
+        <img src="personalizar.png" alt="Crea tu botana">
+        <h3>Crea tu propia botana</h3>
+        <p>Elige los ingredientes, el tamaño y crea tu combinación perfecta.</p>
+
+        <button onclick="openCustomModal()">Personalizar</button>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="container contact" id="contacto">
+    <h2>Contáctanos</h2>
+    <form>
+      <input type="text" placeholder="Tu nombre" required>
+      <input type="email" placeholder="Tu correo" required>
+      <textarea rows="4" placeholder="Mensaje o pedido especial..."></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+
+  <footer>
+    <p>Síguenos en:
+      <a href="#">Facebook</a> |
+      <a href="#">Instagram</a> |
+      <a href="#">WhatsApp</a>
+    </p>
+    <p>© 2025 Botanas a tu Gusto</p>
+  </footer>
+
+  <div id="sidebar-cart">
+    <button class="cart-close" onclick="toggleCart()">×</button>
+    <h2>Carrito</h2>
+    <ul id="cart-items"></ul>
+    <p id="cart-total">Total: $0</p>
+    <button id="empty-cart" onclick="emptyCart()">Vaciar carrito</button>
+
+    <!-- Apartado de Pago -->
+    <div id="payment-section">
+        <h3>Dirección de entrega</h3>
+        <div class="form-group">
+          <input type="text" id="postal-code" placeholder="Código postal" required>
+          <input type="text" id="street" placeholder="Calle y número" required>
+          <input type="text" id="neighborhood" placeholder="Colonia o barrio" required>
+          <input type="text" id="city" placeholder="Ciudad" required>
+          <input type="text" id="state" placeholder="Estado" required>
+          <textarea id="references" placeholder="Referencias (opcional)"></textarea>
+        </div>
+      
+        <h3>Opción de pago</h3>
+        <select id="payment-method">
+          <option value="efectivo">Efectivo</option>
+          <option value="tarjeta">Tarjeta de crédito/débito</option>
+          <option value="paypal">PayPal</option>
+        </select>
+      
+        <button onclick="processPayment()">Procesar pedido</button>
+      </div>
+      
+  </div>
+
+  <!-- Modal de personalización -->
+  <div id="customModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeCustomModal()">×</span>
+      <h2>Personaliza tu botana</h2>
+      <div class="custom-options">
+        <label for="size-custom">Tamaño del vaso:</label>
+        <select id="size-custom">
+          <option value="mediano">Mediano - $30</option>
+          <option value="grande">Grande - $50</option>
+        </select>
+
+        <label>Ingredientes:</label>
+        <label><input type="checkbox" value="Papas" /> Papas</label>
+        <label><input type="checkbox" value="Cacahuates" /> Cacahuates</label>
+        <label><input type="checkbox" value="Tamarindo" /> Tamarindo</label>
+        <label><input type="checkbox" value="Sandia" /> Sandia</label>
+        <label><input type="checkbox" value="Jicama" /> Jicama</label>
+        <label><input type="checkbox" value="Mango" /> Mango</label>
+        <label><input type="checkbox" value=Pepino" /> Pepino</label>
+        <label><input type="checkbox" value="Gomitas" /> Gomitas</label>
+      </div>
+      <button onclick="addCustomSnack()">Agregar al carrito</button>
+    </div>
+  </div>
+
+  <div id="normalModal" class="modal">
+    <div class="modal-content1">
+      <span class="close-modal" onclick="closeNormalModal()">×</span>
+      <h2>Personaliza tu botana</h2>
+      <div class="custom-options">
+        <label for="size-normal">Tamaño del vaso:</label>
+        <select id="size-normal">
+          <option value="mediano">Mediano - $30</option>
+          <option value="grande">Grande - $50</option>
+        </select>
+      </div>
+      <button onclick="addNormalSnack()">Agregar al carrito</button>
+    </div>
+  </div>
+  
+  
+
+  <script src="script.js"></script>
+</body>
+</html>
